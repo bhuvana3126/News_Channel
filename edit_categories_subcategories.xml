@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="itemViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.ItemsViewModel" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBlack">
+
+    <!--Category spinner-->
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/color_white_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/sp_spinner_category_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sp_spinner_category_top" tools:layout_editor_absoluteX="8dp"/>
+
+    <Space
+        android:id="@+id/sp_spinner_category_top"
+        android:layout_width="wrap_content" android:layout_height="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_category"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_category"
+        app:layout_constraintStart_toStartOf="@+id/spinner_category"/>
+
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/dropdown_bg_with_out_line"
+        android:dropDownVerticalOffset="36dp"
+        android:padding="8dp"
+        android:prompt="@string/category"
+        android:spinnerMode="dropdown"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toStartOf="@+id/sw_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/sw_category"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinner_category"/>
+
+    <Space
+        android:id="@+id/sp_spinner_category_bottom"
+        android:layout_width="wrap_content" android:layout_height="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_category"
+        app:layout_constraintStart_toStartOf="@+id/spinner_category"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category"/>
+
+    <!--Subcategory list-->
+
+    <View android:layout_width="0dp" android:layout_height="0dp"
+        android:background="@drawable/color_white_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/subcategory_list"
+        app:layout_constraintEnd_toEndOf="@+id/subcategory_list"
+        app:layout_constraintStart_toStartOf="@+id/subcategory_list"
+        app:layout_constraintTop_toTopOf="@+id/subcategory_list"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subcategory_list"
+        android:name="com.wholesale.jewels.fauxiq.baheekhata.ui.ItemFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category"
+        tools:context=".uis.items.listing_main.items_list.ItemWithSubcategoryFragment"
+        tools:listitem="@layout/item_sub_and_categories"/>
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:textSize="@dimen/title_size_small"
+        tools:text="There is no categories or subcategories yet. \n\nGo back"
+        tools:visibility="gone"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,51 @@
+<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="onCropDoneListener" type="android.view.View.OnClickListener"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <FrameLayout android:layout_width="0dp" android:layout_height="0dp"
+            android:layout_margin="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/crop_btn">
+
+            <com.naver.android.helloyako.imagecrop.view.ImageCropView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:setInnerGridMode="on"
+                app:gridInnerStroke="1dp"
+                app:gridInnerColor="#1cfcfcfc"
+                app:setOuterGridMode="on"
+                app:gridOuterStroke="1dp"
+                app:gridOuterColor="#6cfcfcfc"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/crop_btn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="@string/crop"
+            android:textSize="@dimen/title_size"
+            android:textColor="@color/colorAccent"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:layout_margin="32dp"
+            android:background="@drawable/button_bg_oval"
+            android:onClick="@{onCropDoneListener}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

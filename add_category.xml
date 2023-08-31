@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="itemViewmodel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.ItemsViewModel" />
+
+        <variable
+            name="onCancelClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:layout_marginLeft="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:layout_marginRight="@dimen/text_margin_small"
+            android:background="@drawable/button_bg_stroke_only"
+            app:layout_constraintBottom_toBottomOf="@+id/space_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title_space" />
+
+        <Space
+            android:id="@+id/title_space"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_margin_semi_large"
+            app:layout_constraintBottom_toTopOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:focusedByDefault="true"
+            android:gravity="center"
+            android:paddingBottom="@dimen/text_margin"
+            android:text="@string/metalType"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/title_size_small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_metal_type"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:background="@drawable/ic_drop_down"
+            android:dropDownVerticalOffset="@dimen/text_margin_medium_large"
+            android:entries="@array/metalType"
+            android:padding="@dimen/text_margin_small"
+            android:spinnerMode="dropdown"
+            android:text="@string/metalType"
+            app:selectedValue="@={itemViewmodel.category.metalType}"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintStart_toStartOf="@+id/tl_category_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_category_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_large"
+            android:layout_marginLeft="@dimen/text_margin_large"
+            android:layout_marginTop="@dimen/text_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:layout_marginRight="@dimen/text_margin_large"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sp_metal_type">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
+                android:hint="@string/category_name"
+                android:imeOptions="actionDone"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:text="@={itemViewmodel.category.name}"
+                android:textColor="@color/colorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel_category"
+            android:layout_width="@dimen/action_button_width_small"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/text_margin_large"
+            android:layout_marginLeft="@dimen/text_margin_large"
+            android:layout_marginTop="@dimen/text_margin_large_semi"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:layout_marginRight="@dimen/text_margin_large"
+            android:background="@drawable/cancel_button_bg"
+            android:gravity="center"
+            android:paddingStart="@dimen/text_margin"
+            android:paddingEnd="@dimen/text_margin"
+            android:text="@string/cancel"
+            android:onClick="@{onCancelClickListener}"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_cancel"
+            app:layout_constraintEnd_toStartOf="@+id/btn_done_category"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_done_category"
+            app:layout_constraintTop_toBottomOf="@+id/tl_category_name" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_done_category"
+            android:layout_width="@dimen/action_button_width_small"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:background="@drawable/done_button_bg"
+            android:gravity="center"
+            android:paddingStart="@dimen/text_margin_medium"
+            android:paddingEnd="@dimen/text_margin_medium"
+            android:text="@string/done"
+            android:onClick="@{onDoneClickListener}"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_done_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_cancel_category"
+            app:layout_constraintTop_toTopOf="@+id/btn_cancel_category"
+            tools:layout_editor_absoluteY="511dp" />
+
+        <Space
+            android:id="@+id/space_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_done_category"
+            app:layout_constraintStart_toStartOf="@+id/btn_done_category"
+            app:layout_constraintTop_toBottomOf="@+id/btn_done_category" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

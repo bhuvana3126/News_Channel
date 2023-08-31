@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:padding="16dp"
+        tools:text="Simple list item"
+        android:drawableEnd="@drawable/ic_edit"
+        android:background="@android:color/transparent"
+        android:textSize="@dimen/title_size_small"
+        android:gravity="center"/>
+
+</layout>

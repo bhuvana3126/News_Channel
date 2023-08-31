@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="subCategory"
+            type="com.retail.jewels.fauxiq.accounting.room.entity.itemListing.SubCategory" />
+    </data>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Chain"
+        android:text="@{subCategory.name}"
+        android:alpha="0.85"
+        android:textColor="@color/colorWhite"
+        android:padding="@dimen/text_margin_large"
+        android:background="@drawable/subcategory_list_item_bg"
+        android:textAppearance="?attr/textAppearanceListItem"/>
+</layout>

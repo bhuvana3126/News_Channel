@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBlack">
+
+    <TextView
+        android:id="@+id/tv_empty_view_sale"
+        android:layout_width="0dp" android:layout_height="0dp"
+        tools:text="Tap + to create new customer"
+        android:textSize="@dimen/title_size_small"
+        android:gravity="center"
+        android:background="@drawable/empty_view_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.retail.jewels.fauxiq.accounting.uis.components.SearchViewWithFilter
+        android:id="@+id/search_with_sale_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_sale_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:name="com.wholesale.jewels.fauxiq.baheekhata.ui.itemPurchase.purchaseSummaryListing.PurchaseSummaryListing"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:context=".uis.itemlisting.listing_main.items_list.ItemWithSubcategoryFragment"
+        tools:listitem="@layout/item_sale_list"
+        android:overScrollMode="never"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_with_sale_list"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="itemListListener" type="android.view.View.OnClickListener"/>
+        <variable name="PeopleListListener" type="android.view.View.OnClickListener"/>
+        <variable name="AddStockListListener" type="android.view.View.OnClickListener"/>
+        <variable name="StockListListener" type="android.view.View.OnClickListener"/>
+        <variable name="editStockListListener" type="android.view.View.OnClickListener"/>
+        <variable name="addPurchaseListener" type="android.view.View.OnClickListener"/>
+        <variable name="addSaleListener" type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/item_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/item_list"
+                    android:onClick="@{itemListListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/people_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/people_list"
+                    android:onClick="@{PeopleListListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_list" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/add_stock"
+                    android:onClick="@{AddStockListListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/people_list" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/stock_book"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/stock_book"
+                    android:onClick="@{StockListListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_stock" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/edit_stock_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/edit_stock"
+                    android:onClick="@{editStockListListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/stock_book" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_purchase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addNewPurchase"
+                    android:onClick="@{addPurchaseListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edit_stock_list" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addNewSale"
+                    android:onClick="@{addSaleListener}"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_purchase" />
+
+               <!-- <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/wt_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/wt"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/stock_book" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/beeds_stones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/beeds_stone"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/wt_layout" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/more_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/moreDetails"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/beeds_stones" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_new_purchase_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/newPurchaseItem"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/more_detail" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/purchase_gst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/purchaseGst"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_new_purchase_item" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/purchase_auto_gst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/purchaseAutoGst"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purchase_gst" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/purchase_auto_gst_wt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/purchaseAutoGstWt"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purchase_auto_gst" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/purchase_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/purchaseA"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purchase_auto_gst_wt" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/purchase_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/purchaseB"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purchase_a" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/purchase_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/purchaseC"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purchase_b" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_sale_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addSaleItem"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/purchase_c" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sale_Wt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/saleWt"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_sale_item" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sale_auto_gst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/saleAutoGst"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sale_Wt" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sale_auto_gst_Wt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/saleAutoGstWt"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sale_auto_gst" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sale_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/saleA"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sale_auto_gst_Wt" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_purchase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addNewPurchase"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sale_auto_gst_Wt" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_purchase_bt_sheet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addNewPurchaseBtSheet"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_purchase" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addNewSale"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_purchase_bt_sheet" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add_sale_bt_sheet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_medium_large"
+                    android:layout_marginBottom="@dimen/text_margin_large"
+                    android:background="@drawable/shape_rectangular"
+                    android:text="@string/addNewSaleBtSheet"
+                    android:textColor="@color/colorWhite"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/add_sale" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

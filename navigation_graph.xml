@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.HomeScreen"
+        android:label="Home Fragment"
+        tools:layout="@layout/home_screen">
+        <action
+            android:id="@+id/home_fragment"
+            app:destination="@id/peopleFragment" />
+        <action
+            android:id="@+id/itemListing_fragment"
+            app:destination="@id/itemListViewPagerFragment" />
+        <action
+            android:id="@+id/addCategory_fragment"
+            app:destination="@id/addCategory" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/peopleFragment"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.people.AddEditPeopleFragment"
+        android:label="Add Edit People"
+        tools:layout="@layout/fragment_add_edit_people">
+
+        <argument
+            android:name="people_kind"
+            android:defaultValue="just"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_peopleFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/itemListViewPagerFragment"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.item.ItemsListingFragment"
+        android:label="Item Listing Fragment"
+        tools:layout="@layout/fragment_items_list"
+        >
+        <action
+            android:id="@+id/action_people_to_ItemListingFragment"
+            app:destination="@+id/itemSubCategory"
+            app:popUpTo="@id/itemSubCategory"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false"
+            />
+        <action
+            android:id="@+id/action_itemListFragment_to_addCategory"
+            app:destination="@id/editCategoryAndSubCategory"
+            app:popEnterAnim="@id/editCategoryAndSubCategory"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false"
+            />
+        <action
+            android:id="@+id/action_itemListFragment_to_addEditItem"
+            app:destination="@id/addEditItem"
+            app:popEnterAnim="@id/addEditItem"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addCategory"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.item.category.CreateNewCategory"
+        android:label="Create New Category"
+        tools:layout="@layout/fragment_create_new_category"
+        >
+        <action
+            android:id="@+id/action_people_to_createAddCategory"
+            app:destination="@+id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false"
+            />
+        <action
+            android:id="@+id/action_addCategory_to_itemListViewPagerFragment2"
+            app:destination="@id/itemListViewPagerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editCategoryAndSubCategory"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.item.category.EditCategoriesAndSubcategories"
+        android:label="Edit Category &amp; Sub"
+        tools:layout="@layout/fragment_edit_categories_subcategories"
+        >
+
+        <!--<action
+            android:id="@+id/action_people_to_ItemListingFragment"
+            app:destination="@+id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false"
+            />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/itemSubCategory"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.item.item_list.ItemWithSubcategoryFragment"
+        tools:layout="@layout/fragment_item_with_subcategory_list"
+        >
+        <argument
+            android:name="position"
+            app:argType="com.retail.jewels.fauxiq.accounting.db.room.entities.items.Category"
+            app:nullable="false"
+            />
+        <action
+            android:id="@+id/action_subCategory_To_category"
+            app:destination="@id/itemListViewPagerFragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditItem"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.item.add_item.AddEditItem"
+        tools:layout="@layout/fragment_add_edit_item"
+        >
+        <argument
+            android:name="Additem"
+            app:argType="com.retail.jewels.fauxiq.accounting.db.room.entities.items.Item"
+            app:nullable="false"
+            />
+        <argument
+            android:name="newItem"
+            app:argType="boolean"
+            app:nullable="false"
+            />
+
+
+    </fragment>
+
+
+
+
+</navigation>

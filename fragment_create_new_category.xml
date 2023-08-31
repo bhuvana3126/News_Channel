@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.ItemListingViewModel" />
+
+        <variable
+            name="onCancelClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/button_bg_stroke_only"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_space"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title_space" />
+
+        <Space
+            android:id="@+id/title_space"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="@+id/title"
+            app:layout_constraintStart_toStartOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.85"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:text="@string/add_category"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/title_size_small"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:boxStrokeColor="@color/colorAccent"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
+                android:hint="@string/category"
+                android:imeOptions="actionDone"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:text="@={viewModel._categoryName}"
+                android:textCursorDrawable="@color/colorAccent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="132dp"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/cancel_button_bg"
+            android:drawableStart="@drawable/ic_cancel"
+            android:gravity="center"
+            android:onClick="@{onCancelClickListener}"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/cancel"
+            android:textColor="@color/colorTextColorBlack"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/done"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/done"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+        <TextView
+            android:id="@+id/done"
+            android:layout_width="132dp"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/done_button_bg"
+            android:drawableStart="@drawable/ic_done"
+            android:gravity="center"
+            android:onClick="@{onDoneClickListener}"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/done"
+            android:textColor="@color/colorTextColorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancel"
+            app:layout_constraintTop_toTopOf="@+id/cancel"
+            tools:layout_editor_absoluteY="511dp" />
+
+        <Space
+            android:id="@+id/bottom_space"
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/done"
+            app:layout_constraintStart_toStartOf="@+id/done"
+            app:layout_constraintTop_toBottomOf="@+id/done" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

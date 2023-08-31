@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="purchaseViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.PurchaseViewModel" />
+
+        <variable
+            name="onCancelClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightRed"
+    android:padding="@dimen/text_margin_small">
+
+    <ScrollView
+        android:id="@+id/sv_new_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/btn_beeds_done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_new_purchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_beeds_stone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/beeds_stone"
+                android:textColorHint="@color/colorPrimary"
+                app:boxStrokeColor="@color/colorPrimary"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/et_beeds_stone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textColor="@color/colorPrimary"
+                    android:textCursorDrawable="@color/colorPrimary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_grwt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_large_semi"
+                android:layout_marginTop="8dp"
+                android:text="@string/gr_wt"
+                android:textSize="@dimen/text_size"
+                android:theme="@style/RadioButtonTheme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_beeds_stone" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_carat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_large_semi"
+                android:layout_marginTop="8dp"
+                android:text="@string/carat"
+                android:textSize="@dimen/text_size"
+                android:theme="@style/RadioButtonTheme"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tl_beeds_stone" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rb_qty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_large_semi"
+                android:layout_marginTop="8dp"
+                android:text="@string/qty"
+                android:textSize="@dimen/text_size"
+                android:theme="@style/RadioButtonTheme"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/tl_beeds_stone" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_qty"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/qty"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rb_grwt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_qty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_gr_wt"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/gr_weight"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_qty">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_gr_wt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_carrot"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/carat"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_gr_wt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_carrot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_less_wt"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/less"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_carrot">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_less_wt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_rate_carrot"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/rate_carat"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_less_wt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_rate_carrot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_rate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/rate_gr"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_rate_carrot">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_value"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:hint="@string/value"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_rate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/rdgp_issued_by"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_large_semi"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/text_margin_large_semi"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_value">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_ourself"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/ourself"
+                    android:textSize="@dimen/text_size"
+                    android:theme="@style/RadioButtonTheme" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rb_karigar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/karigar"
+                    android:textSize="@dimen/text_size"
+                    android:theme="@style/RadioButtonTheme" />
+
+            </RadioGroup>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.35" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.65" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text"
+        android:layout_margin="@dimen/text_margin_small"
+        android:alpha="0.4"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_beeds_done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_beeds_cancel"
+        android:layout_width="@dimen/action_button_width"
+        android:layout_height="@dimen/action_button_heights"
+        android:layout_marginStart="@dimen/text_margin_large"
+        android:layout_marginEnd="@dimen/text_margin_large"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:background="@drawable/cancel_button_bg"
+        android:gravity="center"
+        android:paddingStart="@dimen/text_margin_large"
+        android:paddingEnd="@dimen/text_margin_large"
+        android:text="@string/cancel"
+        android:onClick="@{onCancelClickListener}"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size"
+        app:drawableStartCompat="@drawable/ic_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_beeds_done"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_beeds_done" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_beeds_done"
+        android:layout_width="@dimen/action_button_width"
+        android:layout_height="@dimen/action_button_heights"
+        android:layout_marginEnd="@dimen/text_margin_large"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:background="@drawable/done_button_bg"
+        android:gravity="center"
+        android:paddingStart="@dimen/text_margin_large"
+        android:paddingEnd="@dimen/text_margin_large"
+        android:text="@string/done"
+        android:onClick="@{onDoneClickListener}"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size"
+        app:drawableStartCompat="@drawable/ic_done_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_beeds_cancel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

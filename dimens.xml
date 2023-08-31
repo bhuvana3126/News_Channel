@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- text sizes -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size">16sp</dimen>
+    <dimen name="title_size_small">18sp</dimen>
+    <dimen name="title_size">20sp</dimen>
+    <dimen name="title_size_medium">24sp</dimen>
+
+    <dimen name="text_mini">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_default">16sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_large">20sp</dimen>
+    <dimen name="text_x_large">22sp</dimen>
+    <dimen name="text_xx_large">24sp</dimen>
+    <dimen name="text_xxx_large">26sp</dimen>
+
+
+    <!-- padding sizes -->
+    <dimen name="text">2dp</dimen>
+    <dimen name="text_margin">4dp</dimen>
+    <dimen name="text_margin_small">8dp</dimen>
+    <dimen name="text_margin_medium">12dp</dimen>
+    <dimen name="text_margin_large">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin_semi_large">24dp</dimen>
+    <dimen name="text_margin_large_semi">32dp</dimen>
+    <dimen name="text_margin_medium_large">36dp</dimen>
+    <dimen name="action_button_height">40dp</dimen>
+    <dimen name="action_button_heights">44dp</dimen>
+    <dimen name="text_margin_full_large">48dp</dimen>
+    <dimen name="size_profile_image">80dp</dimen>
+    <dimen name="action_button_width_small">96dp</dimen>
+    <dimen name="action_min_height">120dp</dimen>
+    <dimen name="action_button_width">132dp</dimen>
+
+
+</resources>

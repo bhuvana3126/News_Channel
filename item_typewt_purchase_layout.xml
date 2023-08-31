@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="purchaseViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.PurchaseViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightRed"
+        android:padding="@dimen/text_margin_small">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_less_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/lessWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_less_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.lessWeightChange(text)}"
+                android:text="@={purchaseViewModel.lessWt}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_stone_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/stoneWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tl_stone_ch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_less_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_stone_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.stoneWeightChange(text)}"
+                android:text="@={purchaseViewModel.stoneWt}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_stone_ch"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/stoneCharge"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+            app:layout_constraintStart_toEndOf="@+id/tl_stone_wt"
+            app:layout_constraintTop_toBottomOf="@+id/tl_less_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_stone_ch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.stoneChChange(text)}"
+                android:text="@={purchaseViewModel.stoneCharge}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_stone_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:padding="@dimen/text_margin_small"
+            app:drawableEndCompat="@drawable/ic_add_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/tl_stone_wt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tl_stone_wt" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_wax_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/waxWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tl_wax_ch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_stone_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_wax_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.waxWeightChange(text)}"
+                android:text="@={purchaseViewModel.waxWt}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_wax_ch"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/waxCharge"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_wax_add"
+            app:layout_constraintStart_toEndOf="@+id/tl_wax_wt"
+            app:layout_constraintTop_toBottomOf="@+id/tl_stone_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_wax_ch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.waxChChange(text)}"
+                android:text="@={purchaseViewModel.waxCharge}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_wax_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:padding="@dimen/text_margin_small"
+            app:drawableEndCompat="@drawable/ic_add_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/tl_wax_wt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tl_wax_wt" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_recylerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_wax_wt">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/stone_wax_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_people" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_net_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/netWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ct_recylerview">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_net_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:text="@={purchaseViewModel.netWt}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_wastage_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/wastageWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_net_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_wastage_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.wastageWeightChange(text)}"
+                android:text="@={purchaseViewModel.wastageWt}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_total_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/totalWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_wastage_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_total_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:afterTextChanged="@{(text) -> purchaseViewModel.totalWeightChange(text)}"
+                android:text="@={purchaseViewModel.totalWt}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_fine_wt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/fineWeight"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tl_total_wt">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_fine_wt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:text="@={purchaseViewModel.fineWeight}"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

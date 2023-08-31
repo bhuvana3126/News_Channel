@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.retail.jewels.fauxiq.accounting.room.entity.BaseItem" />
+    </data>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_edit"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@{item.name}"
+        android:textSize="@dimen/title_size_small"
+        tools:text="Simple list item" />
+</layout>

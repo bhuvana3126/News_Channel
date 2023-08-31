@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="items"
+            type="com.retail.jewels.fauxiq.accounting.room.entity.itemListing.Item" />
+
+        <variable
+            name="onCancelClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBlack">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/btn_item_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/text_margin_small"
+                android:paddingRight="@dimen/text_margin_small">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/text_margin_small"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_stock_maintain_category"
+                    app:layout_constraintTop_toTopOf="@+id/tv_subcategory" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:background="@drawable/line_end"
+                    android:paddingStart="@dimen/text_margin_small"
+                    android:paddingEnd="@dimen/text_margin_small"
+                    android:text="@string/gold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_subcategory"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_subcategory"
+                    tools:text="Gold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_subcategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/title_size_small"
+                    android:text="@string/silver"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Chain" />
+
+                <!--Item name-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_item_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/itemName"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_category">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
+                        android:maxLength="25"
+                        android:singleLine="true"
+                        android:text="@{items.name}"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--Melt-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_melt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/melt"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_item_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_melt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:DecimalDigitsAfterZero="@{2}"
+                        android:text="@{String.valueOf(items.melt)}"
+                        android:maxLength="6"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Metal type-->
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_item_metal_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:layout_marginTop="@dimen/text_margin_large"
+                    android:hint="@string/metalType"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size"
+                    android:text="@{items.metalType}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_melt" />
+
+                <!--Stock maintain category-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_stock_maintain_wt_qty"
+                    app:layout_constraintTop_toTopOf="@+id/tv_stock_maintain_category" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_stock_maintain_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_semi_large"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorTextHeading"
+                    android:text="@string/stock_maintain_category"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_item_metal_type" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_combineStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:drawableStart="@drawable/dr_start_stock_maintain_combine"
+                    android:drawablePadding="@dimen/text_margin_small"
+                    android:text="@string/combineStock"
+                    android:textColor="@color/tx_color_stock_maintain"
+                    android:textSize="@dimen/title_size_small"
+                    android:isSelected="@{items.stockMaintain.charAt(0) == 'C'}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_stock_maintain_category" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_singleStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:drawableStart="@drawable/dr_start_stock_maintain_single"
+                    android:drawablePadding="@dimen/text_margin_small"
+                    android:text="@string/singleStock"
+
+                    android:textColor="@color/tx_color_stock_maintain"
+                    android:textSize="@dimen/title_size_small"
+                    android:isSelected="@{items.stockMaintain.charAt(0) == 'S'}"
+                    app:layout_constraintStart_toEndOf="@+id/tv_combineStock"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_stock_maintain_category" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_stock_maintain_wt_qty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_combineStock">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/only_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_semi_large"
+                        android:text="@string/only_weight"
+                        android:checked="@{items.stockMaintain.equals(`CW`) || items.stockMaintain.equals(`SW`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/both_weight_qantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/both_weight_qantity"
+                        android:theme="@style/RadioButtonTheme"
+                        android:checked="@{items.stockMaintain.equals(`CWQ`) || items.stockMaintain.equals(`SWQ`)}"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/only_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/only_quantity"
+                        android:checked="@{items.stockMaintain.equals(`CQ`) || items.stockMaintain.equals(`SQ`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--ItemPurchase type-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_purchase_type"
+                    app:layout_constraintTop_toTopOf="@+id/tv_purchase_type" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_purchase_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorTextHeading"
+                    android:text="@string/purchaseType"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_stock_maintain_wt_qty" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_purchase_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_purchase_type">
+
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_touch_wastage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:text="@string/touch_wastage"
+                        android:checked="@{items.purchaseType.equals(`TW`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_unit_touch_wastage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unit_wt_qty_touch_wastage"
+                        android:checked="@{items.purchaseType.equals(`UTW`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_qty_wt_touch_wastage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qty_wt_touch_wastage"
+                        android:checked="@{items.purchaseType.equals(`QTW`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_direct_weight_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/direct_wt_rate"
+                        android:checked="@{items.purchaseType.equals(`DR`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_direct_unit_wt_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/direct_unit_wt_qty_rate"
+                        android:checked="@{items.purchaseType.equals(`DUR`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_direct_qty_wt_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/direct_qty_wt_rate"
+                        android:checked="@{items.purchaseType.equals(`DQR`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_qty_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qty_rate"
+                        android:checked="@{items.purchaseType.equals(`QR`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_purchase_bullion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bullion"
+                        android:checked="@{items.purchaseType.equals(`B`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--Sale type-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_sale_type"
+                    app:layout_constraintTop_toTopOf="@+id/tv_sale_type" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_sale_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorTextHeading"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:text="@string/saleType"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_purchase_type" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_sale_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sale_type">
+
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_touch_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:text="@string/touch_based"
+                        android:checked="@{items.saleType.equals(`TB`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_weisted_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weisted_based"
+                        android:checked="@{items.saleType.equals(`WB`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_unit_wt_touch_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unit_wt_touch_based"
+                        android:checked="@{items.saleType.equals(`UTB`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_unit_wt_wastage_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unit_wt_wastage_based"
+                        android:checked="@{items.saleType.equals(`UWB`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_direct_rate_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/direct_rate_based"
+                        android:checked="@{items.saleType.equals(`DRB`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_qty_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qty_based"
+                        android:checked="@{items.saleType.equals(`QB`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_sales_bullion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bullion"
+                        android:checked="@{items.saleType.equals(`B`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--Making charge-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_making_charge"
+                    app:layout_constraintTop_toTopOf="@+id/tv_making_charge" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_making_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorTextHeading"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    android:text="@string/makingCharge"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_sale_type" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_making_charge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    android:hint="@string/value_0_0"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorLineBlack"
+                    android:theme="@style/TextLabel"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:DecimalDigitsAfterZero="@{2}"
+                    android:text="@{items.makingValue != 0.0 ? String.valueOf(items.makingValue) : ``}"
+                    android:visibility="@{items.makingValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_making_charge" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sw_making_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_making_charge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:theme="@style/RadioButtonTheme"
+                    android:checked="@{items.makingValue != 0.0}"
+                    app:layout_constraintTop_toTopOf="@+id/tv_making_charge" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_making_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    android:visibility="@{items.makingValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_making_charge">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_making_amount_per_gm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount_per_gm"
+                        android:checked="@{items.makingUnit.equals(`A`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_making_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:text="@string/percentage_text"
+                        android:checked="@{items.makingUnit.equals(`P`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--Wastage-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_wastage"
+                    app:layout_constraintTop_toTopOf="@+id/tv_wastage" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorTextHeading"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    android:text="@string/wastage"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_making_charge" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sw_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_wastage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:theme="@style/RadioButtonTheme"
+                    android:checked="@{items.wastageValue != 0.0}"
+                    app:layout_constraintTop_toTopOf="@+id/tv_wastage" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_wastage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    android:hint="@string/value_0_0"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:textCursorDrawable="@color/colorPrimaryDark"
+                    android:textColorHint="@color/colorLineBlack"
+                    android:theme="@style/TextLabel"
+                    android:maxLength="10"
+                    android:text="@{items.wastageValue != 0.0 ? String.valueOf(items.wastageValue) : ``}"
+                    android:visibility="@{items.wastageValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_wastage" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    android:visibility="@{items.wastageValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_wastage">
+
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_wastage_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:text="@string/percentage_text"
+                        android:checked="@{items.wastageUnit.equals(`P`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_wastage_weight_gm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weight_in_gram"
+                        android:checked="@{items.wastageUnit.equals(`W`)}"
+                        android:theme="@style/RadioButtonTheme"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/space_item_description"
+                    app:layout_constraintTop_toTopOf="@+id/tl_hsn_list" />
+
+                <!--HSN list-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_hsn_list"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:hint="@string/hsnCode"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_wastage">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_hsn_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text="@{items.hsnCode}"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Low stock alert-->
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_low_stock_alert"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:hint="@string/lowStock"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_hsn_list">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_low_stock_alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text="@{String.valueOf(items.lowStock)}"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Space
+                    android:id="@+id/space_item_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_margin_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_low_stock_alert" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:alpha="0.4"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_item_done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_item_cancel"
+        android:layout_width="@dimen/action_button_width"
+        android:layout_height="@dimen/action_button_heights"
+        android:layout_marginStart="@dimen/text_margin_large"
+        android:layout_marginEnd="@dimen/text_margin_large"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:background="@drawable/cancel_button_bg"
+        android:gravity="center"
+        android:paddingStart="@dimen/text_margin_large"
+        android:paddingEnd="@dimen/text_margin_large"
+        android:onClick="@{onCancelClickListener}"
+        android:text="@string/cancel" android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size" app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_item_done"
+        app:layout_constraintStart_toEndOf="@+id/btn_item_done"
+        app:drawableStartCompat="@drawable/ic_cancel" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_item_done"
+        android:layout_width="@dimen/action_button_width"
+        android:layout_height="@dimen/action_button_heights"
+        android:layout_marginEnd="@dimen/text_margin_large"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:background="@drawable/done_button_bg"
+        android:gravity="center"
+        android:paddingStart="@dimen/text_margin_large"
+        android:paddingEnd="@dimen/text_margin_large"
+        android:text="@string/done"
+        android:onClick="@{onDoneClickListener}"
+        android:textColor="@color/colorWhite" android:textSize="@dimen/text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_item_cancel"
+        app:drawableStartCompat="@drawable/ic_done_circle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

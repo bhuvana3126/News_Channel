@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="saleViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.SaleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightRed">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_gst_rate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:hint="@string/gst_rate"
+            android:textColorHint="@color/colorPrimaryDark"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/colorPrimary"
+            app:hintTextColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_gst_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/text_margin"
+                android:gravity="center_horizontal"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:textCursorDrawable="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/rdgp_gst_groups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tl_gst_rate">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/sgst_cgst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/sgst_cgst" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/igst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/igst" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/utgst_cgst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/utgst_cgst" />
+        </RadioGroup>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_cgst"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="4dp"
+            android:text="CGST ( 1.5% )"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/rdgp_gst_groups"
+            tools:text="CGST ( 1.5% )" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_sgst"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="SGST ( 1.5% )"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_cgst"
+            tools:text="SGST ( 1.5% )" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_igst"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="IGST ( 1.5% )"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_sgst"
+            tools:text="IGST ( 1.5% )" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_utgst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="UTGST ( 1.5% )"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_igst"
+            tools:text="UTGST ( 1.5% )" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="4dp"
+            android:text="@string/total_gst"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_utgst" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_cgst_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/rdgp_gst_groups"
+            tools:text="1200" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_sgst_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_cgst"
+            tools:text="2300" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_igst_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_sgst"
+            tools:text="0.0 " />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_utgst_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_igst"
+            tools:text="0.0" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_new_sale_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="4dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_new_sale_utgst"
+            tools:text="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

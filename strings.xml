@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">JewelsBaheekhata</string>
+
+    <!--Item-->
+    <string name="add_sub_category">Add sub-category</string>
+    <string name="edit">Edit</string>
+    <string name="category">Category</string>
+    <string name="category_name">Category Name</string>
+    <string name="subCategory">Subcategory</string>
+    <string name="add_category">Add Category</string>
+    <string name="restore_defaults">Restore item list</string>
+    <string name="edit_category_sub"><![CDATA[Edit category & sub]]></string>
+    <string name="reset">Reset item list</string>
+    <string name="edit_category_and_">Edit Category &amp; Sub</string>
+    <string name="name_already_exist">Name already exist</string>
+    <string name="itemName">Item Name</string>
+    <string name="melt">Melt %</string>
+    <string name="gold">Gold</string>
+    <string name="silver">Silver</string>
+    <string name="stock_maintain_category">Stock maintain category</string>
+    <string name="combineStock">Combine Stock</string>
+    <string name="singleStock">Single Stock</string>
+    <string name="only_weight">Only weight</string>
+    <string name="both_weight_qantity">Both weight and quantity</string>
+    <string name="only_quantity">Only quantity</string>
+    <string name="purchaseType">ItemPurchase type</string>
+
+    <string name="touch_based">Touch based</string>
+    <string name="weisted_based">Wastage based</string>
+    <string name="unit_wt_touch_based">Unit wt. touch based</string>
+    <string name="unit_wt_wastage_based">Unit wt wastage based</string>
+    <string name="direct_rate_based">Direct rate based</string>
+    <string name="qty_based">Qty based</string>
+
+    <string name="touch_wastage">TOUCH WASTAGE</string>
+    <string name="unit_wt_qty_touch_wastage">UNIT WT X QTY TOUCH WASTAGE</string>
+    <string name="qty_wt_touch_wastage">QTY WEIGHT TOUCH WASTAGE</string>
+    <string name="direct_wt_rate">DIRECT WEIGHT X RATE</string>
+    <string name="direct_unit_wt_qty_rate">DIRECT UNIT WT X QTY RATE</string>
+    <string name="direct_qty_wt_rate">DIRECT QTY WEIGHT X RATE</string>
+    <string name="qty_rate">QTY X RATE</string>
+    <string name="bullion">BULLION</string>
+
+
+    <string name="saleType">Sale type</string>
+    <string name="amount_per_gm">Amount per gm.</string>
+    <string name="percentage_text">Percentage</string>
+    <string name="wastage">Wastage</string>
+    <string name="weight_in_gram">Weight per gm.</string>
+    <string name="hsnCode">HSN Code</string>
+    <string name="lowStock">Low Stock</string>
+    <string name="itemDescription">Item Description</string>
+    <string name="touch_percentage_range">Touch percentage range</string>
+    <string name="value_0_0">0.0</string>
+    <string name="value_0">0</string>
+
+    <!--    stock-->
+    <string name="fineBased">FineBased</string>
+    <string name="rateBased">RateBased</string>
+    <string name="itemType">ItemType</string>
+    <string name="productCode">ProductCode</string>
+    <string name="touch">Touch %</string>
+    <string name="qty">Qty</string>
+    <string name="unitWt">Unit Weight</string>
+    <string name="grossWeight">Gross Weight</string>
+    <string name="Weight">Weight(Gm)</string>
+    <string name="lessWeight">Less Weight</string>
+    <string name="stoneWeight">Stone Weight</string>
+    <string name="unit">Unit</string>
+    <string name="waxWeight">Wax Weight</string>
+    <string name="netWeight">Net Weight</string>
+    <string name="wastageWeight">Wastage Weight</string>
+    <string name="totalWeight">Total Weight</string>
+    <string name="fineWeight">Fine Weight</string>
+    <string name="rate">Rate</string>
+    <string name="netAmount">Net Amount</string>
+    <string name="discount">Discount</string>
+    <string name="taxableAmount">Taxable Amount</string>
+    <string name="totalAmount">Total Amount</string>
+
+    <!--    charges-->
+    <string name="charges">Charges</string>
+    <string name="charge">Charge</string>
+    <string name="making">Making</string>
+    <string name="otherCharge">Other Charge</string>
+    <string name="makingCharge">Making Charge</string>
+    <string name="hallmarkCharge">Hallmark Charge</string>
+    <string name="stoneCharge">Stone Charge</string>
+    <string name="waxCharge">Wax Charge</string>
+    <string name="totalCharge">Total Charges</string>
+
+    <!--    gstDetails-->
+    <string name="gst">GST</string>
+    <string name="gst_rate">GST Rate</string>
+    <string name="cgst_percentage">CGST &#40; %1$s %% &#41;</string>
+    <string name="sgst_percentage">SGST &#40; %1$s %% &#41;</string>
+    <string name="igst_percentage">IGST &#40; %1$s %% &#41;</string>
+    <string name="utgst_percentage">UTGST &#40; %1$s %% &#41;</string>
+    <string name="sgst_cgst">SGST &amp; CGST</string>
+    <string name="igst">IGST</string>
+    <string name="utgst_cgst">UTGST &amp; CGST</string>
+    <string name="total_gst">Total GST</string>
+
+    <!--    moreDetails-->
+    <string name="size_length">Size / length</string>
+    <string name="incil">Incil</string>
+    <string name="comment">Comment</string>
+
+
+    <!--    stone and wax item-->
+    <string name="beeds_stone">Beeds/Stones</string>
+    <string name="short_name">Short Name</string>
+    <string name="gr_weight">Gr.Weight</string>
+    <string name="less">Less</string>
+    <string name="rate_carat">Rate/Carat</string>
+    <string name="rate_gr">Rate</string>
+    <string name="value">Value</string>
+    <string name="by">Issued By</string>
+    <string name="select_transaction">Select Transaction</string>
+    <string name="item_issued_to_worker">Item Issued To Worker</string>
+    <string name="gr_wt">Gross</string>
+    <string name="carat">Carat</string>
+    <string name="ourself">Ourself</string>
+    <string name="karigar_issue">Karigar Issue</string>
+
+    <!--common-->
+    <string name="done">Done</string>
+    <string name="payment">Payment</string>
+    <string name="next">NEXT</string>
+    <string name="pay">Pay</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear">Clear</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="generate">Generate</string>
+    <string name="add">Add</string>
+    <string name="moreDetails">More details</string>
+    <string name="newPurchaseItem">NewPurchaseItem</string>
+    <string name="purchaseGst">PurchaseGst</string>
+    <string name="purchaseAutoGst">PurchaseAutoGst</string>
+    <string name="purchaseAutoGstWt">PurchaseAutoGstWt</string>
+    <string name="purchaseA">PurchaseA</string>
+    <string name="purchaseB">PurchaseB</string>
+    <string name="purchaseC">PurchaseC</string>
+    <string name="addSaleItem">AddSaleItem</string>
+    <string name="saleWt">SaleWt</string>
+    <string name="saleAutoGst">SaleGst</string>
+    <string name="saleAutoGstWt">SaleAutoGstWt</string>
+    <string name="saleA">SaleA</string>
+    <string name="addNewPurchase">AddNewPurchase</string>
+    <string name="addNewPurchaseBtSheet">PurchaseBtSheet</string>
+    <string name="addNewSale">AddNewSale</string>
+    <string name="addNewSaleBtSheet">SaleBtSheet</string>
+
+
+    <!--    homeScreen-->
+    <string name="item_list">ItemList</string>
+    <string name="add_item">AddItem</string>
+    <string name="add_stock">AddStock</string>
+    <string name="add_people">AddPeople</string>
+    <string name="people_list">PeopleList</string>
+    <string name="stock_book">StockBook</string>
+    <string name="wt">Weight</string>
+    <string name="customer">Customer</string>
+    <string name="party">Party</string>
+    <string name="karigar">Karigar</string>
+    <string name="other">Other</string>
+
+    <!--    people-->
+    <string name="people">People</string>
+    <string name="name">Name</string>
+    <string name="companyName">Company Name</string>
+    <string name="mobileNumber">Mobile Number</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="gstinNumber">GSTIN Number</string>
+    <string name="email">Email</string>
+    <string name="id_type">Id Type</string>
+    <string name="id_number">Id Number</string>
+    <string name="address">Address</string>
+    <string name="buildingArea">Building area</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="pinCode">PinCode</string>
+    <string name="accountDetails">Account details</string>
+    <string name="amount">Amount</string>
+    <string name="fineWt">Fine Wt</string>
+    <string name="metalType">Metal Type</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <!--    add purchase-->
+    <string name="searchCustomer">SearchCustomer</string>
+    <string name="searchParty">SearchParty</string>
+    <string name="add_purchase">+ Add</string>
+    <string name="bill_date">Bill Date</string>
+    <string name="due_date">Due Date</string>
+    <string name="invoiceNumber">Invoice Number</string>
+
+
+    <!--    payment-->
+    <string name="paymentType">PaymentType</string>
+    <string name="bankName">BankName</string>
+    <string name="tnxId">TxnID</string>
+    <string name="convert_to_fine">Convert to Fine</string>
+    <string name="convert_to_amount">Convert to Amount</string>
+    <string name="fully_paid">Is Fully Paid</string>
+    <string name="money">Money</string>
+    <string name="fine">Fine</string>
+    <string name="account_lock">Once Locked! Can not edit account details</string>
+    <string name="retry">Retry</string>
+    <string name="alert_delete">Delete ?</string>
+    <string name="alert_delete_msg">Once deleted, cannot get back !</string>
+    <string name="edit_stock">Edit Stock List</string>
+
+
+
+    <string name="homeScreen">Home</string>
+
+</resources>

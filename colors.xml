@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#1a237e</color>
+    <color name="colorPrimary">#283593</color>
+    <color name="colorAccent">#ebb01a</color>
+
+    <color name="colorPink">#E91E63</color>
+    <color name="colorLightPink">#f8bbd0</color>
+    <color name="colorDarkPink">#880e4f</color>
+
+    <color name="colorLightRed">#FFCDD2</color>
+
+
+    <color name="colorWhite">#fcfcfc</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorSecondary">#607D8B</color>
+    <color name="colorBrown">#F337240D</color>
+    <color name="colorLightBackground">#f6f9fc</color>
+    <color name="colorLineBlack">#5a5a5a</color>
+    <color name="colorLightBlack">#f2f2f2</color>
+    <color name="colorBlackDisabled">#d1d1d1</color>
+    <color name="colorGreen">#1d9c5a</color>
+    <color name="colorPurple">#ab1a58</color>
+
+
+    <color name="colorOrange">#ff9800</color>
+    <color name="colorDeepOrange">#ff5722</color>
+
+    <color name="colorBlue">#2196f3</color>
+    <color name="colorDarkBlue">#0d47a1</color>
+    <color name="colorLightBlue">#03a9f4</color>
+
+    <color name="colorIndigo">#3f51b5</color>
+    <color name="colorLightIndigoBg">#e8eaf6</color>
+    <color name="colorLightIndigo">#9fa8da</color>
+
+    <color name="colorAmber">#ffc107</color>
+    <color name="colorDarkAmber">#ffab00</color>
+
+    <color name="colorGray">#9e9e9e</color>
+    <color name="colorDarkGrayFst">#212121</color>
+    <color name="colorDarkGraySec">#424242</color>
+    <color name="colorLightGray">#eeeeee</color>
+
+    <color name="colorBlueGray">#607d8b</color>
+    <color name="colorDarkBlueGray">#263238</color>
+
+    <!-- Text Color-->
+    <color name="colorTextPrimary">#1a237e</color>
+    <color name="colorTextHeading">#ff9800</color>
+
+
+
+    <!-- colorLightPink #f8bbd0 -->
+    <color name="colorPinkFst">#FCE4EC</color>
+    <color name="colorPinkSnd">#F8BBD0</color>
+    <color name="colorPinkTrd">#F48FB1</color>
+    <color name="colorPinkFth">#FF80AB</color>
+    <color name="colorPinkFiv">#F06292</color>
+    <color name="colorPinkSix">#F06292</color>
+    <color name="colorPinkSvn">#C51162</color>
+    <color name="colorPinkEgt">#ffb6c1</color>
+    <color name="colorPinkNie">#ffd0d7</color>
+    <color name="colorPinkTen">#ffb6cd</color>
+    <color name="colorPinkEln">#ffb6d3</color>
+    <color name="colorPinkTve">#ffb6c7</color>
+
+
+
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="purchaseViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.PurchaseViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/shape_rectangular">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/customer_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_large"
+        android:layout_marginTop="@dimen/text_margin_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="CASH"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/customer_mobile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_small"
+        android:layout_marginEnd="@dimen/text_margin_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="CASH[CTF] "
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintStart_toStartOf="@+id/customer_name"
+        app:layout_constraintTop_toBottomOf="@+id/customer_name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cash_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_small"
+        android:layout_marginEnd="@dimen/text_margin_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="400000"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ctf_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_small"
+        android:layout_marginEnd="@dimen/text_margin_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="50000[wt:4.000]"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customer_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

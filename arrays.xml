@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="gstStateName">
+        <item>JAMMU AND KASHMIR</item>
+        <item>HIMACHAL PRADESH</item>
+        <item>PUNJAB</item>
+        <item>CHANDIGARH</item>
+        <item>UTTARAKHAND</item>
+        <item>HARYANA</item>
+        <item>DELHI</item>
+        <item>RAJASTHAN</item>
+        <item>UTTAR PRADESH</item>
+        <item>BIHAR</item>
+        <item>SIKKIM</item>
+        <item>ARUNACHAL PRADESH</item>
+        <item>NAGALAND</item>
+        <item>MANIPUR</item>
+        <item>MIZORAM</item>
+        <item>TRIPURA</item>
+        <item>MEGHLAYA</item>
+        <item>ASSAM</item>
+        <item>WEST BENGAL</item>
+        <item>JHARKHAND</item>
+        <item>ODISHA</item>
+        <item>CHATTISGARH</item>
+        <item>MADHYA PRADESH</item>
+        <item>GUJARAT</item>
+        <item>DAMAN AND DIU</item>
+        <item>DADRA AND NAGAR HAVELI</item>
+        <item>MAHARASHTRA</item>
+        <item>ANDHRA PRADESH(BEFORE DIVISION)</item>
+        <item>KARNATAKA</item>
+        <item>GOA</item>
+        <item>LAKSHWADEEP</item>
+        <item>KERALA</item>
+        <item>TAMIL NADU</item>
+        <item>PUDUCHERRY</item>
+        <item>ANDAMAN AND NICOBAR ISLANDS</item>
+        <item>TELANGANA</item>
+        <item>ANDHRA PRADESH (NEW)</item>
+    </string-array>
+
+    <string-array name="metalType">
+        <item>Gold</item>
+        <item>Silver</item>
+        <item>Platinum</item>
+        <item>Diamond</item>
+    </string-array>
+
+    <string-array name="idType">
+        <item>None</item>
+        <item>AADHAR CARD</item>
+        <item>PAN CARD</item>
+        <item>VOTER ID</item>
+        <item>DRIVING LICENSE</item>
+        <item>RATION CARD</item>
+    </string-array>
+
+    <string-array name="itemIdType">
+        <item>TOUCH WASTAGE</item>
+        <item>UNIT WT X QTY TOUCH WASTAGE</item>
+        <item>QTY WEIGHT TOUCH WASTAGE</item>
+        <item>DIRECT WEIGHT X RATE</item>
+        <item>DIRECT UNIT WT X QTY RATE</item>
+        <item>DIRECT QTY WEIGHT X RATE</item>
+        <item>QTY X RATE</item>
+        <item>BULLION</item>
+    </string-array>
+
+    <string-array name="paymentMethod">
+        <item>CASH</item>
+        <item>CARD</item>
+        <item>CHEQUE</item>
+        <item>UPI</item>
+        <item>IMPS</item>
+        <item>RTGS</item>
+        <item>NEFT</item>
+        <item>NONE</item>
+    </string-array>
+
+</resources>
+
+
+    <!--"TB" -> R.id.rb_purchase_touch_based
+    "WB" -> R.id.rb_purchase_weisted_based
+    "UTB" -> R.id.rb_purchase_unit_wt_touch_based
+    "UWB" -> R.id.rb_purchase_unit_wt_wastage_based
+    "DRB" -> R.id.rb_purchase_direct_rate_based
+    "QB" -> R.id.rb_purchase_qty_based
+    "B" -> R.id.rb_purchase_bullion
+    else -> R.id.rb_purchase_touch_based-->

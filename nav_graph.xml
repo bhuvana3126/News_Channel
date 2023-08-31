@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreen">
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.retail.jewels.fauxiq.accounting.HomeScreen"
+        android:label="HomeScreen"
+        tools:layout="@layout/home_screen">
+        <action
+            android:id="@+id/action_homeScreen_to_peopleList"
+            app:destination="@id/peopleList" />
+        <action
+            android:id="@+id/action_homeScreen_to_addStockList"
+            app:destination="@id/addStockList" />
+        <action
+            android:id="@+id/action_homeScreen_to_itemListingFragment"
+            app:destination="@id/itemListingFragment" />
+        <action
+            android:id="@+id/action_homeScreen_to_addItemPurchase"
+            app:destination="@id/addItemPurchase" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addStockList"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.stocklist.addstock.AddStockList"
+        android:label="AddStockList"
+        tools:layout="@layout/add_stock_list">
+        <action
+            android:id="@+id/action_addStockList_to_addStock"
+            app:destination="@id/addStock" />
+        <action
+            android:id="@+id/action_addStockList_to_homeScreen"
+            app:destination="@id/homeScreen"
+            app:popUpTo="@id/homeScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addStock"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.stocklist.addstock.AddStock"
+        android:label="AddStock"
+        tools:layout="@layout/add_item_stock">
+        <argument
+            android:name="addMode"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="itemStock"
+            app:argType="com.retail.jewels.fauxiq.accounting.room.entity.purchaseListing.ItemPurchase" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/itemListingFragment"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.items.itemlisting.ItemListingFragment"
+        android:label="ItemListingFragment"
+        tools:layout="@layout/items_list">
+        <action
+            android:id="@+id/action_itemListingFragment_to_addEditItem"
+            app:destination="@id/addEditItem" />
+        <action
+            android:id="@+id/action_itemListingFragment_to_createNewCategory"
+            app:destination="@id/createNewCategory" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/itemWithSubcategoryFragment"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.items.subcategory.ItemWithSubcategoryFragment"
+        android:label="ItemWithSubcategoryFragment"
+        tools:layout="@layout/item_with_subcategory_list" />
+
+    <fragment
+        android:id="@+id/addEditItem"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.items.AddEditItem"
+        android:label="AddEditItem"
+        tools:layout="@layout/add_edit_item">
+        <argument
+            android:name="newItem"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="item"
+            app:argType="com.retail.jewels.fauxiq.accounting.room.entity.itemListing.Item" />
+        <action
+            android:id="@+id/action_addEditItem_to_itemListingFragment"
+            app:destination="@id/itemListingFragment"
+            app:popUpTo="@id/itemListingFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/createNewCategory"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.items.category.CreateNewCategory"
+        android:label="CreateNewCategory"
+        tools:layout="@layout/add_category">
+
+        <action
+            android:id="@+id/action_createNewCategory_to_itemListingFragment"
+            app:destination="@id/itemListingFragment"
+            app:popUpTo="@id/itemListingFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchItems"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.items.search_items.SearchItems"
+        android:label="SearchItems"
+        tools:layout="@layout/fragment_search_items" />
+
+    <fragment
+        android:id="@+id/peopleList"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.people.PeopleList"
+        android:label="PeopleList"
+        tools:layout="@layout/people_list">
+        <argument
+            android:name="argMode"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_peopleList_to_addEditPeople"
+            app:destination="@id/addEditPeople" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditPeople"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.people.addpeople.AddEditPeople"
+        android:label="AddEditPeople"
+        tools:layout="@layout/add_edit_people">
+        <argument
+            android:name="fromPurchase"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addItemPurchase"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.itempurchase.addpurchase.AddItemPurchase"
+        android:label="AddItemPurchase"
+        tools:layout="@layout/add_new_purchase" >
+        <action
+            android:id="@+id/action_addItemPurchase_to_addEditPeople"
+            app:destination="@id/addEditPeople" />
+        <action
+            android:id="@+id/action_addItemPurchase_to_addEditNewItem"
+            app:destination="@id/addEditNewItem" />
+        <action
+            android:id="@+id/action_addItemPurchase_to_purchasePaymentFragment"
+            app:destination="@id/purchasePaymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditNewItem"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.itempurchase.addpurchase.AddEditNewItem"
+        android:label="AddEditNewItem"
+        tools:layout="@layout/add_item_purchase" >
+        <argument
+            android:name="addMode"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="itemPurchase"
+            app:argType="com.retail.jewels.fauxiq.accounting.room.entity.purchaseListing.ItemPurchase" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchasePaymentFragment"
+        android:name="com.retail.jewels.fauxiq.accounting.ui.itempurchase.addpurchase.PurchasePaymentFragment"
+        android:label="PurchasePaymentFragment"
+        tools:layout="@layout/bottom_sheet_purchase_payment"/>
+
+
+</navigation>

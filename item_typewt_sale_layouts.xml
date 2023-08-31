@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="saleViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.SaleViewModel" />
+
+        <variable
+            name="onGossWtExpandClickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onStoneAddClickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onWaxAddExpandClickListener"
+            type="android.view.View.OnClickListener" />
+
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightRed"
+    android:padding="@dimen/text_margin_small">
+
+    <ScrollView
+        android:id="@+id/sv_new_stock"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/text_margin_small"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ct_new_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_touch"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/touch"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/tv_expand_wt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_touch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_qty"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/qty"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/tv_expand_wt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_touch">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_qty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_unit_wt"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/unitWt"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/tv_expand_wt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_qty">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_unit_wt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_gr_wt"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/grossWeight"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorPrimary"
+                app:hintTextColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/tv_expand_wt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_unit_wt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_gr_wt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_expand_wt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:padding="@dimen/text_margin_small"
+                android:onClick="@{onGossWtExpandClickListener}"
+                app:drawableEndCompat="@drawable/ic_round_arrow_down"
+                app:layout_constraintBottom_toBottomOf="@+id/tl_gr_wt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tl_gr_wt" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ct_wt_new_stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_expand_wt"
+                app:layout_constraintTop_toBottomOf="@+id/tl_gr_wt">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_less_wt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/lessWeight"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_less_wt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_stone_wt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/stoneWeight"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tl_stone_ch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_less_wt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_stone_wt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_stone_ch"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/stoneCharge"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+                    app:layout_constraintStart_toEndOf="@+id/tl_stone_wt"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_less_wt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_stone_ch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_stone_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:padding="@dimen/text_margin_small"
+                    android:onClick="@{onStoneAddClickListener}"
+                    app:drawableEndCompat="@drawable/ic_add_circle"
+                    app:layout_constraintBottom_toBottomOf="@+id/tl_stone_wt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tl_stone_wt" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_wax_wt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/waxWeight"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tl_wax_ch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_stone_wt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_wax_wt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_wax_ch"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/waxCharge"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_wax_add"
+                    app:layout_constraintStart_toEndOf="@+id/tl_wax_wt"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_stone_wt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_wax_ch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_wax_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center"
+                    android:onClick="@{onWaxAddExpandClickListener}"
+                    android:padding="@dimen/text_margin_small"
+                    app:drawableEndCompat="@drawable/ic_add_circle"
+                    app:layout_constraintBottom_toBottomOf="@+id/tl_wax_wt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tl_wax_wt" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ct_recylerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_wax_wt">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/stone_wax_list"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/text_margin_small"
+                        android:layout_marginEnd="@dimen/text_margin_small"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_people" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_net_wt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/netWeight"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ct_recylerview">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_net_wt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_fine_wt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/fineWeight"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_net_wt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_fine_wt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Wastage wt-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/button_bg_stroke_only"
+                    app:layout_constraintBottom_toBottomOf="@+id/tl_unit"
+                    app:layout_constraintTop_toTopOf="@+id/tv_wastage" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    android:text="@string/wastage"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_fine_wt" />
+
+
+                <RadioGroup
+                    android:id="@+id/rdgp_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_margin_large"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_wastage">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_wastage_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:text="@string/percentage_text"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_wastage_weight_gm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/weight_in_gram"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_unit"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/unit"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tl_weight"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_wastage">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_unit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textCursorDrawable="@color/colorAccent"
+                        android:layout_marginBottom="@dimen/text_margin_small"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_weight"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/wt"
+                    android:layout_marginStart="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tl_unit"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_wastage">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textCursorDrawable="@color/colorAccent"
+                        android:layout_marginBottom="@dimen/text_margin_small"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_total_wt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_small"
+                    android:hint="@string/totalWeight"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_stone_add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_unit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_total_wt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:gravity="center_horizontal"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:textCursorDrawable="@color/colorAccent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

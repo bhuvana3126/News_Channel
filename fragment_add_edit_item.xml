@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="com.retail.jewels.fauxiq.accounting.db.room.converters.DoubleToStringConverter" />
+
+        <variable
+            name="viewmodel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.ItemListingViewModel" />
+
+        <variable
+            name="item"
+            type="com.retail.jewels.fauxiq.accounting.db.room.entities.items.Item" />
+
+        <variable
+            name="onCancelClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneClickListener"
+            type="android.view.View.OnClickListener" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightBlack"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/create_edit_item_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toTopOf="@+id/stock_maintain_category"
+                    app:layout_constraintTop_toTopOf="@+id/subcategory" />
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/line_end"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/subcategory"
+                    app:layout_constraintEnd_toStartOf="@+id/subcategory"
+                    tools:text="Gold" />
+
+                <TextView
+                    android:id="@+id/subcategory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Chain" />
+
+                <!--Item name-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/item_name_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/subcategory">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/item_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
+                        android:hint="@string/itemName"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:singleLine="true"
+                        android:text="@{viewmodel._ItemName}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Melt percentage-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/melt_percentage_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_name_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/melt_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:DecimalDigitsAfterZero="@{2}"
+                        android:hint="@string/melt"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6"
+                        android:text="@={DoubleToStringConverter.convertDoubleToString(viewmodel._Melt)}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Metal type-->
+
+                <TextView
+                    android:id="@+id/tv_add_edit_item_metal_type_text"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:text="@string/metalType"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/melt_percentage_layout" />
+
+                <Spinner
+                    android:id="@+id/sp_add_edit_item_metal_type"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/dropdown_bg"
+                    android:dropDownVerticalOffset="36dp"
+                    android:prompt="@string/metalType"
+                    android:spinnerMode="dropdown"
+                    android:text="@string/metalType"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_add_edit_item_metal_type_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_add_edit_item_metal_type_text" />
+
+                <!--Stock maintain category-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_stock_maintain_wt_qnty"
+                    app:layout_constraintTop_toTopOf="@+id/stock_maintain_category" />
+
+                <TextView
+                    android:id="@+id/stock_maintain_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/stock_maintain_category"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sp_add_edit_item_metal_type" />
+
+                <TextView
+                    android:id="@+id/combineStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/dr_start_stock_maintain_combine"
+                    android:drawablePadding="8dp"
+                    android:isSelected="@{item.stockMaintain.charAt(0) == 'C'}"
+                    android:text="@string/combineStock"
+                    android:textColor="@color/tx_color_stock_maintain"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stock_maintain_category" />
+
+                <TextView
+                    android:id="@+id/singleStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/dr_start_stock_maintain_single"
+                    android:drawablePadding="8dp"
+                    android:isSelected="@{item.stockMaintain.charAt(0) == 'S'}"
+                    android:text="@string/singleStock"
+                    android:textColor="@color/tx_color_stock_maintain"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintStart_toEndOf="@+id/combineStock"
+                    app:layout_constraintTop_toBottomOf="@+id/stock_maintain_category" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_stock_maintain_wt_qnty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/combineStock">
+
+                    <RadioButton
+                        android:id="@+id/only_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:checked="@{item.stockMaintain.equals(`CW`) || item.stockMaintain.equals(`SW`)}"
+                        android:text="@string/only_weight"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/both_weight_qantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.stockMaintain.equals(`CWQ`) || item.stockMaintain.equals(`SWQ`)}"
+                        android:text="@string/both_weight_qantity"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/only_quantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.stockMaintain.equals(`CQ`) || item.stockMaintain.equals(`SQ`)}"
+                        android:text="@string/only_quantity"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--ItemPurchase type-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_purchase_type"
+                    app:layout_constraintTop_toTopOf="@+id/purchase_type" />
+
+                <TextView
+                    android:id="@+id/purchase_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/purchaseType"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_stock_maintain_wt_qnty" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_purchase_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/purchase_type">
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_touch_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:checked="@{item.purchaseType.equals(`TB`)}"
+                        android:text="@string/touch_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_weisted_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.purchaseType.equals(`WB`)}"
+                        android:text="@string/weisted_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_unit_wt_touch_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.purchaseType.equals(`UTB`)}"
+                        android:text="@string/unit_wt_touch_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_unit_wt_wastage_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.purchaseType.equals(`UWB`)}"
+                        android:text="@string/unit_wt_wastage_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_direct_rate_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.purchaseType.equals(`DRB`)}"
+                        android:text="@string/direct_rate_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_qty_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.purchaseType.equals(`QB`)}"
+                        android:text="@string/qty_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_purchase_bullion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.purchaseType.equals(`B`)}"
+                        android:text="@string/bullion"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--Sale type-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_sale_type"
+                    app:layout_constraintTop_toTopOf="@+id/sale_type" />
+
+                <TextView
+                    android:id="@+id/sale_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/saleType"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_purchase_type" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_sale_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="56dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sale_type">
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_touch_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:checked="@{item.saleType.equals(`TB`)}"
+                        android:text="@string/touch_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_weisted_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.saleType.equals(`WB`)}"
+                        android:text="@string/weisted_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_unit_wt_touch_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.saleType.equals(`UTB`)}"
+                        android:text="@string/unit_wt_touch_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_unit_wt_wastage_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.saleType.equals(`UWB`)}"
+                        android:text="@string/unit_wt_wastage_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_direct_rate_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.saleType.equals(`DRB`)}"
+                        android:text="@string/direct_rate_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_qty_based"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.saleType.equals(`QB`)}"
+                        android:text="@string/qty_based"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sales_bullion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.saleType.equals(`B`)}"
+                        android:text="@string/bullion"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--Making charge-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_making_charge"
+                    app:layout_constraintTop_toTopOf="@+id/making_charge_text" />
+
+                <TextView
+                    android:id="@+id/making_charge_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/makingCharge"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_sale_type" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/making_charge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:DecimalDigitsAfterZero="@{2}"
+                    android:hint="@string/value_0_0"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:text="@{item.makingValue != 0.0 ? String.valueOf(item.makingValue) : ``}"
+                    android:visibility="@{item.makingValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/making_charge_text" />
+
+                <Switch
+                    android:id="@+id/sw_making_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:checked="@{item.makingValue != 0.0}"
+                    app:layout_constraintBottom_toBottomOf="@+id/making_charge_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/making_charge_text" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_making_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp"
+                    android:visibility="@{item.makingValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/making_charge">
+
+                    <RadioButton
+                        android:id="@+id/rb_making_amount_per_gm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.makingUnit.equals(`A`)}"
+                        android:text="@string/amount_per_gm"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_making_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:checked="@{item.makingUnit.equals(`P`)}"
+                        android:text="@string/percentage_text"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <!--Wastage-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/rdgp_wastage"
+                    app:layout_constraintTop_toTopOf="@+id/wastage_text" />
+
+                <TextView
+                    android:id="@+id/wastage_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/wastage"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_making_charge" />
+
+                <Switch
+                    android:id="@+id/sw_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:checked="@{item.wastageValue != 0.0}"
+                    app:layout_constraintBottom_toBottomOf="@+id/wastage_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/wastage_text" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/wastage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:DecimalDigitsAfterZero="@{3}"
+                    android:hint="@string/value_0_0"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:text="@{item.wastageValue != 0.0 ? String.valueOf(item.wastageValue) : ``}"
+                    android:visibility="@{item.wastageValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/wastage_text" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_wastage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp"
+                    android:visibility="@{item.wastageValue != 0.0 ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/wastage">
+
+                    <RadioButton
+                        android:id="@+id/rb_wastage_percentage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:checked="@{item.wastageUnit.equals(`P`)}"
+                        android:text="@string/percentage_text"
+                        android:textSize="@dimen/title_size_small" />
+
+                    <RadioButton
+                        android:id="@+id/rb_wastage_weight_gm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="@{item.wastageUnit.equals(`W`)}"
+                        android:text="@string/weight_in_gram"
+                        android:textSize="@dimen/title_size_small" />
+                </RadioGroup>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/sp_item_description"
+                    app:layout_constraintTop_toTopOf="@+id/hsn_list_layout" />
+
+                <!--HSN list-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/hsn_list_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:paddingTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_wastage">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/hsn_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hsnCode"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text="@{item.hsnCode}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Low stock alert-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/low_stock_alert_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/hsn_list_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/low_stock_alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:DecimalDigitsAfterZero="@{3}"
+                        android:hint="@string/lowStock"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
+                        android:text="@{String.valueOf(item.lowStock)}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--Item description-->
+
+                <TextView
+                    android:id="@+id/item_description_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/itemDescription"
+                    android:textSize="@dimen/title_size_small"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/low_stock_alert_layout" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/item_description"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/button_bg_stroke_only"
+                    android:gravity="top|start"
+                    android:imeOptions="actionNext"
+                    android:inputType="textMultiLine"
+                    android:maxLength="200"
+                    android:padding="8dp"
+                    android:paddingBottom="16dp"
+                    android:text="@{item.itemDescription.length()!=0 ? item.itemDescription : item.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_description_label" />
+
+                <Space
+                    android:id="@+id/sp_item_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_description" />
+
+                <!--Touch percentage-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/color_white_bg"
+                    app:layout_constraintBottom_toBottomOf="@+id/touch_percentage_items"
+                    app:layout_constraintTop_toTopOf="@+id/touch_percentage_layout" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/touch_percentage_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="56dp"
+                    android:paddingTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sp_item_description">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/touch_percentage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/touch_percentage_range"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/bt_add_touch_percentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:drawableEnd="@drawable/ic_forward"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/touch_percentage_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/touch_percentage_layout"
+                    app:layout_constraintTop_toTopOf="@+id/touch_percentage_layout" />
+
+                <GridLayout
+                    android:id="@+id/touch_percentage_items"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:columnCount="4"
+                    android:minHeight="56dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/touch_percentage_layout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="8dp"
+            android:alpha="0.4"
+            android:background="@color/colorLineBlack"
+            app:layout_constraintBottom_toTopOf="@+id/create_edit_item_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/create_edit_item_cancel"
+            android:layout_width="@dimen/action_button_width"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{onCancelClickListener}"
+            android:background="@drawable/cancel_button_bg"
+            android:drawableStart="@drawable/ic_cancel"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/cancel" android:textColor="@color/colorTextColorBlack"
+            android:textSize="16sp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/create_edit_item_done"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/create_edit_item_done"/>
+
+        <TextView
+            android:id="@+id/create_edit_item_done"
+            android:layout_width="@dimen/action_button_width"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{onDoneClickListener}"
+            android:background="@drawable/done_button_bg"
+            android:drawableStart="@drawable/ic_done"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/done"
+            android:textColor="@color/colorTextColorWhite" android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/create_edit_item_cancel"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="saleViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.SaleViewModel" />
+
+        <variable
+            name="onAddPeopleListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onPeopleChooseListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onAddClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onBillDateClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDueDateClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCancelClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onPaymentClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightRed">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <!-- <LinearLayout
+            android:id="@+id/linear_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_rectangular_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="@dimen/size_profile_image"
+                android:layout_height="@dimen/text_margin_large_semi"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:text="+ Add"
+                android:onClick="@{onAddPeopleListener}"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/ic_edit_btn"
+                android:padding="@dimen/text_margin_small" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/linear_search_customer"
+                style="@style/TextLabelStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/searchCustomer"
+                android:textColorHint="@color/colorWhite"
+                app:boxStrokeColor="@color/colorWhite"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorWhite"
+                app:hintTextColor="@color/colorWhite"/>
+
+        </LinearLayout>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangular_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_add_customer"
+                android:layout_width="@dimen/size_profile_image"
+                android:layout_height="@dimen/text_margin_large_semi"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:text="+ Add"
+                android:onClick="@{onAddPeopleListener}"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/ic_edit_btn"
+                android:padding="@dimen/text_margin_small"
+                app:layout_constraintBottom_toBottomOf="@+id/tl_search_customer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tl_search_customer" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_search_customer"
+                style="@style/TextLabelStock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:hint="@string/searchCustomer"
+                android:textColorHint="@color/colorWhite"
+                app:boxStrokeColor="@color/colorWhite"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorWhite"
+                app:hintTextColor="@color/colorWhite"
+                app:layout_constraintEnd_toStartOf="@+id/tv_customer_search"
+                app:layout_constraintStart_toEndOf="@+id/tv_add_customer"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_search_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_margin"
+                    android:gravity="center_horizontal"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textColor="@color/colorWhite"
+                    android:textCursorDrawable="@color/colorWhite" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_customer_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:padding="@dimen/text_margin_small"
+                android:onClick="@{onPeopleChooseListener}"
+                app:drawableEndCompat="@drawable/ic_search_white"
+                app:layout_constraintBottom_toBottomOf="@+id/tl_search_customer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tl_search_customer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_bill_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:text="@string/bill_date"
+                android:onClick="@{onBillDateClickListener}"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_search_customer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_bill_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:onClick="@{onBillDateClickListener}"
+                android:layout_marginBottom="@dimen/text_margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bill_date_text"
+                tools:text="19 Jan 2018" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_due_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="16dp"
+                android:text="@string/due_date"
+                android:onClick="@{onDueDateClickListener}"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tl_search_customer" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_due_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:onClick="@{onDueDateClickListener}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_due_date_text"
+                tools:text="19 Jan 2018" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sale_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/text_margin_large"
+            android:background="@drawable/shape_rectangular_top"
+            android:overScrollMode="never"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sale_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_header" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_new_stock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="24dp"
+            android:onClick="@{onAddClickListener}"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:layout_marginBottom="116dp"
+            android:src="@drawable/ic_add"
+            app:fabSize="normal"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text"
+            android:layout_margin="@dimen/text_margin_small"
+            android:alpha="0.4"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_item_sale_payment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sale_cancel"
+            android:layout_width="@dimen/action_button_width"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginStart="@dimen/text_margin_large"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:background="@drawable/cancel_button_bg"
+            android:gravity="center"
+            android:paddingStart="@dimen/text_margin_large"
+            android:paddingEnd="@dimen/text_margin_large"
+            android:text="@string/cancel"
+            android:onClick="@{onCancelClickListener}"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size"
+            app:drawableStartCompat="@drawable/ic_cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_item_sale_payment"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_item_sale_payment" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_item_sale_payment"
+            android:layout_width="@dimen/action_button_width"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:background="@drawable/done_button_bg"
+            android:gravity="center"
+            android:paddingStart="@dimen/text_margin_large"
+            android:paddingEnd="@dimen/text_margin_large"
+            android:text="@string/payment"
+            android:onClick="@{onPaymentClickListener}"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size"
+            app:drawableStartCompat="@drawable/ic_done_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_sale_cancel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <include
+        layout="@layout/bottom_sheet_sale_payment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

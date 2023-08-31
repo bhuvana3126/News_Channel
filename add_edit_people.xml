@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.retail.jewels.fauxiq.accounting.room.converters.DoubleToStringConverter" />
+
+
+        <import type="com.retail.jewels.fauxiq.accounting.room.converters.BindingUtils" />
+
+        <import type="com.retail.jewels.fauxiq.accounting.utills.BindingAdapterKt" />
+
+        <import type="com.retail.jewels.fauxiq.accounting.enums.PaymentType" />
+
+        <variable
+            name="onPeopleTypeChangeListener"
+            type="com.retail.jewels.fauxiq.accounting.utills.OnCheckedChangeListener" />
+
+        <variable
+            name="people"
+            type="com.retail.jewels.fauxiq.accounting.room.dataclass.PeopleVM" />
+
+        <variable
+            name="peopleViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.PeopleViewModel" />
+
+        <variable
+            name="onMoreExpandListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onAddressExpandListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onAddMetalListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onChooseImageListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onChooseItemImageListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCancelListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/btn_new_customer_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_customer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/text_margin_large">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_customer"
+                    android:layout_width="@dimen/size_profile_image"
+                    android:layout_height="@dimen/size_profile_image"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:onClick="@{onChooseImageListener}"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/add_photo_icon"
+                    app:civ_border_color="@color/colorBlackDisabled"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.476"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/rb_people_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={BindingAdapterKt.peopleTypeToButtonId(peopleViewModel.people.peopleKind)}"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_customer">
+
+                    <RadioButton
+                        android:id="@+id/rb_customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bindingLayoutMargin="@{@dimen/text_margin}"
+                        android:text="@string/customer" />
+
+                    <RadioButton
+                        android:id="@+id/rb_party"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bindingLayoutMargin="@{@dimen/text_margin}"
+                        android:text="@string/party" />
+
+                    <RadioButton
+                        android:id="@+id/rb_karigar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bindingLayoutMargin="@{@dimen/text_margin}"
+                        android:text="@string/karigar" />
+
+                    <RadioButton
+                        android:id="@+id/rb_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bindingLayoutMargin="@{@dimen/text_margin}"
+                        android:text="@string/other" />
+
+                </RadioGroup>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_customer_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:hint="@string/name"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:errorEnabled="true"
+                    app:layout_constraintTop_toBottomOf="@+id/rb_people_type">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_customer_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_person_circle"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:maxLength="50"
+                        android:singleLine="true"
+                        android:text="@={peopleViewModel.people.name}"
+                        android:textCursorDrawable="@color/colorPink" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_mobile_number"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:hint="@string/mobileNumber"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_customer_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_mobile_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:text="@={peopleViewModel.people.mobileNumber}"
+                        android:textCursorDrawable="@color/colorPink" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--            android:text="@={LongToStringConverter.ConvertLongToString(peopleViewModel.people.mobile_number)}"-->
+
+
+                <TextView
+                    android:id="@+id/tv_more_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:background="@color/colorLightBackground"
+                    android:padding="@dimen/text_margin_small"
+                    android:textSize="@dimen/title_size"
+                    android:text="@string/moreDetails"
+                    android:textColor="@color/colorTextHeading"
+                    android:onClick="@{onMoreExpandListener}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_mobile_number" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_more_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_more_details">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_company_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:gravity="center_horizontal"
+                        android:hint="@string/companyName"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_company"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapWords"
+                            android:maxLength="50"
+                            android:singleLine="true"
+                            android:text="@={peopleViewModel.people.companyName}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_phone_number"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/phoneNumber"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_company_name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_phone"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="phone"
+                            android:maxLength="15"
+                            android:text="@={peopleViewModel.people.phoneNumber}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--            android:text="@={LongToStringConverter.ConvertLongToString(peopleViewModel.people.phone_number)}"-->
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_gstin_number"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/gstinNumber"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_phone_number">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_gstin_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_gstin"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="15"
+                            android:text="@={peopleViewModel.people.gstinNumber}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/email"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_gstin_number">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_email"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
+                            android:text="@={peopleViewModel.people.email}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/sp_id_type"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.AppCompat.Spinner.DropDown"
+                        android:layout_marginTop="8dp"
+                        android:entries="@array/idType"
+                        android:padding="@dimen/text_margin_small"
+                        android:dropDownVerticalOffset="@dimen/text_margin_medium_large"
+                        android:background="@drawable/ic_drop_down_id"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_email"
+                        app:selectedValue="@={peopleViewModel.people.idType}" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_item"
+                        android:layout_width="@dimen/size_profile_image"
+                        android:layout_height="@dimen/size_profile_image"
+                        app:bindingLayoutMargin="@{@dimen/text_margin_small}"
+                        android:layout_marginTop="32dp"
+                        android:onClick="@{onChooseItemImageListener}"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/add_photo_icon"
+                        app:civ_border_color="@color/colorBlackDisabled"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_email" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_id_number"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/id_number"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sp_id_type">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_id_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_idcard"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="25"
+                            android:text="@={peopleViewModel.people.idNumber}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.75" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:background="@color/colorLightBackground"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:onClick="@{onAddressExpandListener}"
+                    android:padding="@dimen/text_margin_small"
+                    android:text="@string/address"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_more_details" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_address_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_address">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_building_area"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/buildingArea"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_building_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_building"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="150"
+                            android:singleLine="true"
+                            android:text="@={peopleViewModel.people.buildingArea}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_city"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/city"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_building_area">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_city"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="50"
+                            android:singleLine="true"
+                            android:text="@={peopleViewModel.people.city}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_state"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/state"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_city">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_state"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_state"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="50"
+                            android:singleLine="true"
+                            android:text="@={peopleViewModel.people.state}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tl_pin_code"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:hint="@string/pinCode"
+                        android:textColorHint="@color/colorPrimaryDark"
+                        app:boxStrokeColor="@color/colorPrimaryDark"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:hintTextColor="@color/colorPrimaryDark"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_state">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_pin_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_pin_code"
+                            android:drawablePadding="@dimen/text_margin"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:singleLine="true"
+                            android:text="@={peopleViewModel.people.pinCode}"
+                            android:textCursorDrawable="@color/colorPink" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_account_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:background="@color/colorLightBackground"
+                    android:padding="@dimen/text_margin_small"
+                    android:text="@string/accountDetails"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="@dimen/title_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_address_details" />
+
+                <CheckBox
+                    android:id="@+id/cb_account_lock"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:layout_marginEnd="@dimen/text_margin_large"
+                    android:text="@string/account_lock"
+                    android:checked="@={peopleViewModel.people.accountLock}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/tv_account_details"/>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_amount"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:hint="@string/amount"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cb_account_lock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/text_margin"
+                        android:imeOptions="actionNext"
+                        android:inputType="numberDecimal"
+                        android:text="@={DoubleToStringConverter.convertDoubleToString(peopleViewModel.people.amount)}"
+                        android:textCursorDrawable="@color/colorPink" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RadioGroup
+                    android:id="@+id/rdgp_amount_credit_debit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={BindingAdapterKt.creditDebitToButtonId(peopleViewModel.people.radioAmt)}"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_amount">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_people_amount_credit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_arrow_downward"
+                        android:drawableEnd="@drawable/rupee_in"
+                        android:textSize="@dimen/text_size"
+                        android:theme="@style/RadioButtonTheme" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rb_people_amount_debit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:drawableStart="@drawable/ic_arrow_upward"
+                        android:drawableEnd="@drawable/rupee_out"
+                        android:textSize="@dimen/text_size"
+                        android:theme="@style/RadioButtonTheme" />
+
+                </RadioGroup>
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/button_bg_stroke_only"
+                    app:layout_constraintBottom_toBottomOf="@+id/space_add_weight"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tl_fine_weight"
+                    tools:layout_editor_absoluteX="16dp" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_fine_weight"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:bindingLayoutMargin="@{@dimen/text_margin_small}"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:hint="@string/fineWt"
+                    app:boxStrokeColor="@color/colorPrimaryDark"
+                    app:endIconMode="clear_text"
+                    app:endIconTint="@color/colorPrimary"
+                    app:hintTextColor="@color/colorPrimaryDark"
+                    app:layout_constraintEnd_toStartOf="@+id/sp_metal_type"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_amount_credit_debit">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_fine_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:DecimalDigitsAfterZero="@{3}"
+                        android:background="@android:color/transparent"
+                        android:imeOptions="actionDone"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20"
+                        android:text="@={DoubleToStringConverter.convertDoubleToString(peopleViewModel.people.fineWt)}"
+                        android:textCursorDrawable="@color/colorPink" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_metal_type"
+                    selectedValueAttrChanged=""
+                    android:layout_width="@dimen/action_button_width"
+                    android:layout_height="wrap_content"
+                    app:bindingLayoutMargin="@{@dimen/text_margin_small}"
+                    android:layout_marginTop="@dimen/text_margin_semi_large"
+                    android:layout_marginBottom="@dimen/text_margin_small"
+                    android:background="@drawable/ic_drop_down"
+                    android:dropDownVerticalOffset="@dimen/text_margin_medium_large"
+                    android:entries="@array/metalType"
+                    android:padding="@dimen/text_margin_small"
+                    android:prompt="@string/category"
+                    android:spinnerMode="dropdown"
+                    android:text="@string/metalType"
+                    app:selectedValue="@={peopleViewModel.people.metalType}"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rdgp_amount_credit_debit" />
+
+                <TextView
+                    android:id="@+id/btn_add_metal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_margin_large"
+                    android:layout_marginEnd="@dimen/text_margin_full_large"
+                    android:background="@drawable/button_bg_blue"
+                    android:drawablePadding="@dimen/text_margin_small"
+                    android:gravity="center"
+                    android:onClick="@{onAddMetalListener}"
+                    android:padding="@dimen/text_margin_small"
+                    android:text="@string/add"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    app:drawableEndCompat="@drawable/ic_forward"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_metal_type"
+                    app:layout_constraintStart_toStartOf="@+id/sp_metal_type"
+                    app:layout_constraintTop_toBottomOf="@+id/sp_metal_type" />
+
+                <Space
+                    android:id="@+id/space_add_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_margin_small"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_add_metal"
+                    app:layout_constraintStart_toStartOf="@+id/btn_add_metal"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_add_metal" />
+
+                <RadioGroup
+                    android:id="@+id/rdgp_add_fine_weight_debit_credit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:bindingLayoutMargin="@{@dimen/text_margin_small}"
+                    android:layout_marginTop="@dimen/text_margin_small"
+                    android:checkedButton="@={BindingAdapterKt.fineWtToButtonId(peopleViewModel.people.radioFineWt)}"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tl_fine_weight"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_fine_weight">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rd_add_fine_weight_credit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_arrow_downward"
+                        android:drawableEnd="@drawable/rupee_in"
+                        android:textSize="@dimen/text_size"
+                        android:theme="@style/RadioButtonTheme" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rd_add_fine_weight_debit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/text_margin_large"
+                        android:drawableStart="@drawable/ic_arrow_upward"
+                        android:drawableEnd="@drawable/rupee_out"
+                        android:textSize="@dimen/text_size"
+                        android:theme="@style/RadioButtonTheme" />
+
+
+                </RadioGroup>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gl_add_fine_wt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:paddingStart="@dimen/text_margin_small"
+                    android:paddingTop="@dimen/text_margin_large"
+                    android:paddingEnd="@dimen/text_margin_small"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_add_metal"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_add_people_fine_wt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text"
+            android:layout_margin="@dimen/text_margin_small"
+            android:alpha="0.4"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/btn_new_customer_done"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_customer_cancel"
+            android:layout_width="@dimen/action_button_width"
+            android:layout_height="@dimen/action_button_heights"
+            app:bindingLayoutMargin="@{@dimen/text_margin_large}"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:background="@drawable/cancel_button_bg"
+            android:gravity="center"
+            android:onClick="@{onCancelListener}"
+            android:paddingStart="@dimen/text_margin_large"
+            android:paddingEnd="@dimen/text_margin_large"
+            android:text="@string/cancel"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size"
+            app:drawableStartCompat="@drawable/ic_cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_new_customer_done"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_new_customer_done" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_new_customer_done"
+            android:layout_width="@dimen/action_button_width"
+            android:layout_height="@dimen/action_button_heights"
+            android:layout_marginEnd="@dimen/text_margin_large"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:background="@drawable/done_button_bg"
+            android:gravity="center"
+            android:onClick="@{onDoneListener}"
+            android:paddingStart="@dimen/text_margin_large"
+            android:paddingEnd="@dimen/text_margin_large"
+            android:text="@string/done"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size"
+            app:drawableStartCompat="@drawable/ic_done_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_customer_cancel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

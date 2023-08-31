@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="stockViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.StockViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_large"
+        android:layout_marginLeft="@dimen/text_margin_large"
+        android:layout_marginTop="@dimen/text_margin_small"
+        android:layout_marginEnd="@dimen/text_margin_large"
+        android:layout_marginRight="@dimen/text_margin_large"
+        android:layout_marginBottom="@dimen/text_margin_small">
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="# S0001" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            android:alpha="0.85"
+            android:drawablePadding="@dimen/text_margin_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="@dimen/title_size_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/weight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id"
+            tools:text="Fancy Bangle, 91.6" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_margin_small"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name"
+            tools:text="Wt: 100.000" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

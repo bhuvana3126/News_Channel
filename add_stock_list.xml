@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="stockViewModel"
+            type="com.retail.jewels.fauxiq.accounting.viewmodel.StockViewModel" />
+
+        <variable
+            name="onAddCLickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCancelCLickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onDoneCLickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/empty_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                tools:text="Tap + to create new items"
+                android:textSize="@dimen/title_size_small"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                tools:visibility="gone"
+                android:background="#fcfcfc"
+                tools:listitem="@layout/add_item_stock"
+                android:layout_marginBottom="@dimen/action_button_width_small"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_new_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="@dimen/text_margin_semi_large"
+                android:onClick="@{onAddCLickListener}"
+                android:layout_marginEnd="@dimen/text_margin_large"
+                android:layout_marginBottom="@dimen/action_button_width_small"
+                android:src="@drawable/ic_add"
+                app:fabSize="normal" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text"
+                android:layout_margin="@dimen/text_margin_small"
+                android:alpha="0.4"
+                android:background="@color/colorAccent"
+                app:layout_constraintBottom_toTopOf="@+id/btn_new_stcok_done"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_stock_cancel"
+                android:layout_width="@dimen/action_button_width"
+                android:layout_height="@dimen/action_button_heights"
+                android:layout_marginStart="@dimen/text_margin_large"
+                android:layout_marginEnd="@dimen/text_margin_large"
+                android:layout_marginBottom="@dimen/text_margin_small"
+                android:background="@drawable/cancel_button_bg"
+                android:gravity="center"
+                android:onClick="@{onCancelCLickListener}"
+                android:paddingStart="@dimen/text_margin_large"
+                android:paddingEnd="@dimen/text_margin_large"
+                android:text="@string/cancel"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size"
+                app:drawableStartCompat="@drawable/ic_cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_new_stcok_done"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_new_stcok_done" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_new_stcok_done"
+                android:layout_width="@dimen/action_button_width"
+                android:layout_height="@dimen/action_button_heights"
+                android:layout_marginEnd="@dimen/text_margin_large"
+                android:layout_marginBottom="@dimen/text_margin_small"
+                android:background="@drawable/done_button_bg"
+                android:gravity="center"
+                android:onClick="@{onDoneCLickListener}"
+                android:paddingStart="@dimen/text_margin_large"
+                android:paddingEnd="@dimen/text_margin_large"
+                android:text="@string/done"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size"
+                app:drawableStartCompat="@drawable/ic_done_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_stock_cancel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="people"
+            type="com.retail.jewels.fauxiq.accounting.room.entity.people.People" />
+
+        <variable
+            name="onNextClickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onItemClickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:onClick="@{onItemClickListener}"
+    android:tag="@{people}"
+    android:background="@drawable/shape_rectangular">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/image_text"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_color_bg"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                android:text="AZ"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:layout_marginBottom="@dimen/text_margin_small"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_customer"
+                android:layout_width="60dp"
+                android:visibility="gone"
+                android:layout_height="60dp"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/text_margin_large"
+                android:layout_marginBottom="@dimen/text_margin_large"
+                android:layout_marginStart="@dimen/text_margin_large"
+                android:layout_marginEnd="@dimen/text_margin_large"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/customer_name"
+                tools:text="Anamika (CA0001)"
+                android:text="@{people.name}"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/text_margin_large" android:layout_marginStart="90dp"
+                android:layout_marginEnd="@dimen/text_margin_large"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/customer_mobile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:text="@{people.mobileNumber}"
+                app:layout_constraintEnd_toStartOf="@+id/forward"
+                app:layout_constraintStart_toStartOf="@+id/customer_name"
+                app:layout_constraintTop_toBottomOf="@+id/customer_name"
+                tools:text="9491750528" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/forward"
+                android:onClick="@{onNextClickListener}"
+                android:layout_gravity="end|center_vertical"
+                android:src="@drawable/ic_forward_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_large"
+                android:contentDescription="@string/people"
+                app:layout_constraintTop_toBottomOf="@+id/customer_name"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

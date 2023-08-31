@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_pay_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/liner">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_pay_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_pay_type"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/text_margin_small"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:hint="@string/paymentType"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="dropdown_menu"
+                            app:endIconTint="@color/colorPrimaryDark"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toStartOf="@+id/tl_amount"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                android:id="@+id/et_pay_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:imeOptions="actionNext"
+                                android:inputType="none"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textCursorDrawable="@color/colorPrimaryDark" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_amount"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:hint="@string/amount"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/colorPrimary"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tl_pay_type"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_amount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:gravity="center_horizontal"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10"
+                                android:textCursorDrawable="@color/colorAccent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_bank_name"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/text_margin_small"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:layout_marginBottom="@dimen/text_margin_small"
+                            android:hint="@string/bankName"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/colorPrimaryDark"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tl_pay_type">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_bank_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:gravity="center_horizontal"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:textCursorDrawable="@color/colorAccent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_txn_id"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/text_margin_small"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:layout_marginBottom="@dimen/text_margin_small"
+                            android:hint="@string/tnxId"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/colorPrimaryDark"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tl_bank_name">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_txn_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:gravity="center_horizontal"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:textCursorDrawable="@color/colorAccent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        &lt;!&ndash;convert to fine&ndash;&gt;
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_clf"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorLightRed"
+                            app:layout_constraintTop_toBottomOf="@+id/tl_txn_id">
+
+                            <View
+                                android:id="@+id/layout_convert_to_fine"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/text_margin_small"
+                                android:layout_marginLeft="@dimen/text_margin_small"
+                                android:layout_marginTop="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_small"
+                                android:layout_marginRight="@dimen/text_margin_small"
+                                android:background="@drawable/button_bg_stroke_only"
+                                app:layout_constraintBottom_toBottomOf="@+id/tl_weight"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tl_ctf"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/text_margin_large"
+                                android:layout_marginTop="@dimen/text_margin_large"
+                                android:padding="@dimen/text_margin_small"
+                                android:text="@string/convert_to_fine"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/title_size_small"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/sw_rb_money_io_making_charge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="@dimen/text_margin_large"
+                                android:padding="@dimen/text_margin_small"
+                                android:theme="@style/RadioButtonTheme"
+                                app:layout_constraintBottom_toBottomOf="@+id/tl_ctf"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/tl_ctf" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tl_metal_type"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/text_margin_large"
+                                android:layout_marginTop="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_small"
+                                android:hint="@string/metalType"
+                                android:textColorHint="@color/colorPrimaryDark"
+                                app:boxStrokeColor="@color/colorPrimaryDark"
+                                app:endIconMode="dropdown_menu"
+                                app:endIconTint="@color/colorPrimaryDark"
+                                app:hintTextColor="@color/colorPrimaryDark"
+                                app:layout_constraintEnd_toStartOf="@+id/tl_rate"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tl_ctf">
+
+                                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                    android:id="@+id/et_metal_type"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawablePadding="@dimen/text_margin"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textCursorDrawable="@color/colorPrimaryDark" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tl_rate"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_large"
+                                android:hint="@string/rate"
+                                android:textColorHint="@color/colorPrimaryDark"
+                                app:boxStrokeColor="@color/colorPrimaryDark"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/colorPrimary"
+                                app:hintTextColor="@color/colorPrimaryDark"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/tl_metal_type"
+                                app:layout_constraintTop_toBottomOf="@+id/tl_ctf">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_rate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawablePadding="@dimen/text_margin"
+                                    android:gravity="center_horizontal"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:textCursorDrawable="@color/colorAccent" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tl_weight"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/text_margin_large"
+                                android:layout_marginTop="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_large"
+                                android:layout_marginBottom="@dimen/text_margin_small"
+                                android:hint="@string/wt"
+                                android:textColorHint="@color/colorPrimaryDark"
+                                app:boxStrokeColor="@color/colorPrimaryDark"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/colorPrimaryDark"
+                                app:hintTextColor="@color/colorPrimaryDark"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tl_rate">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_weight"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/text_margin_small"
+                                    android:drawablePadding="@dimen/text_margin"
+                                    android:gravity="center_horizontal"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:textCursorDrawable="@color/colorAccent" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_purchase_clear"
+                            android:layout_width="@dimen/action_button_width"
+                            android:layout_height="@dimen/action_button_heights"
+                            android:layout_marginStart="@dimen/text_margin_large"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_large"
+                            android:layout_marginBottom="@dimen/text_margin_small"
+                            android:background="@drawable/bg_round"
+                            android:gravity="center"
+                            android:onClick="@{onClearClickListener}"
+                            android:paddingStart="@dimen/text_margin_large"
+                            android:paddingEnd="@dimen/text_margin_large"
+                            android:text="@string/clear"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/text_size"
+                            app:drawableStartCompat="@drawable/ic_cancel"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_item_purchase_pay"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/btn_item_purchase_pay"
+                            app:layout_constraintTop_toBottomOf="@+id/cl_clf" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_item_purchase_pay"
+                            android:layout_width="@dimen/action_button_width"
+                            android:layout_height="@dimen/action_button_heights"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_large"
+                            android:layout_marginBottom="@dimen/text_margin_small"
+                            android:background="@drawable/bg_round"
+                            android:gravity="center"
+                            android:onClick="@{onPayClickListener}"
+                            android:paddingStart="@dimen/text_margin_large"
+                            android:paddingEnd="@dimen/text_margin_large"
+                            android:text="@string/pay"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/text_size"
+                            app:drawableStartCompat="@drawable/ic_done_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/btn_purchase_clear"
+                            app:layout_constraintTop_toBottomOf="@+id/cl_clf" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_pay_fine"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_fine_metal_type"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/text_margin_small"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:hint="@string/metalType"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:endIconMode="dropdown_menu"
+                            app:endIconTint="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toStartOf="@+id/tl_fine_melt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                                android:id="@+id/et_fine_metal_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:imeOptions="actionNext"
+                                android:inputType="none"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textCursorDrawable="@color/colorPrimaryDark" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_fine_melt"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:hint="@string/melt"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/colorPrimary"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tl_fine_metal_type"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_fine_melt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:gravity="center_horizontal"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10"
+                                android:textCursorDrawable="@color/colorAccent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_fine_wt"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/text_margin_small"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:hint="@string/fineWeight"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/colorPrimary"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toStartOf="@+id/tl_gr_wt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tl_fine_metal_type">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_fine_wt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:gravity="center_horizontal"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10"
+                                android:textCursorDrawable="@color/colorAccent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tl_gr_wt"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_small"
+                            android:hint="@string/gr_weight"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            app:boxStrokeColor="@color/colorPrimaryDark"
+                            app:endIconMode="clear_text"
+                            app:endIconTint="@color/colorPrimary"
+                            app:hintTextColor="@color/colorPrimaryDark"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tl_fine_wt"
+                            app:layout_constraintTop_toBottomOf="@+id/tl_fine_metal_type">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_gr_wt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/text_margin"
+                                android:gravity="center_horizontal"
+                                android:imeOptions="actionNext"
+                                android:inputType="numberDecimal"
+                                android:maxLength="10"
+                                android:textCursorDrawable="@color/colorAccent" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        &lt;!&ndash;convert to fine&ndash;&gt;
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cl_ctm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:background="@color/colorLightRed"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@+id/tl_fine_wt">
+
+                            <View
+                                android:id="@+id/layout_convert_to_amount"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/text_margin_small"
+                                android:layout_marginLeft="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_small"
+                                android:layout_marginRight="@dimen/text_margin_small"
+                                android:background="@drawable/button_bg_stroke_only"
+                                app:layout_constraintBottom_toBottomOf="@+id/tl_fine_amount"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tl_ctm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/text_margin_large"
+                                android:layout_marginTop="@dimen/text_margin_large"
+                                android:padding="@dimen/text_margin_small"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:text="@string/convert_to_amount"
+                                android:textSize="@dimen/title_size_small"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/sw_fine_making_charge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="@dimen/text_margin_large"
+                                android:padding="@dimen/text_margin_small"
+                                app:layout_constraintBottom_toBottomOf="@+id/tl_ctm"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:theme="@style/RadioButtonTheme"
+                                app:layout_constraintTop_toTopOf="@+id/tl_ctm" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tl_fine_amount"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/text_margin_large"
+                                android:layout_marginTop="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_small"
+                                android:hint="@string/amount"
+                                android:textColorHint="@color/colorPrimaryDark"
+                                app:boxStrokeColor="@color/colorPrimaryDark"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/colorPrimary"
+                                app:hintTextColor="@color/colorPrimaryDark"
+                                app:layout_constraintEnd_toStartOf="@+id/tl_fine_rate"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tl_ctm">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_fine_amount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawablePadding="@dimen/text_margin"
+                                    android:gravity="center_horizontal"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:layout_marginBottom="@dimen/text_margin_small"
+                                    android:textCursorDrawable="@color/colorAccent" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tl_fine_rate"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/text_margin_small"
+                                android:layout_marginEnd="@dimen/text_margin_large"
+                                android:hint="@string/rate"
+                                android:textColorHint="@color/colorPrimaryDark"
+                                app:boxStrokeColor="@color/colorPrimaryDark"
+                                app:endIconMode="clear_text"
+                                app:endIconTint="@color/colorPrimary"
+                                app:hintTextColor="@color/colorPrimaryDark"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/tl_fine_amount"
+                                app:layout_constraintTop_toBottomOf="@+id/tl_ctm">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_fine_rate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawablePadding="@dimen/text_margin"
+                                    android:gravity="center_horizontal"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="numberDecimal"
+                                    android:maxLength="10"
+                                    android:textCursorDrawable="@color/colorAccent" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_purchase_fine_clear"
+                            android:layout_width="@dimen/action_button_width"
+                            android:layout_height="@dimen/action_button_heights"
+                            android:layout_marginStart="@dimen/text_margin_large"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_large"
+                            android:layout_marginBottom="@dimen/text_margin_small"
+                            android:background="@drawable/bg_round"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/text_margin_large"
+                            android:paddingEnd="@dimen/text_margin_large"
+                            android:text="@string/clear"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/text_size"
+                            app:drawableStartCompat="@drawable/ic_cancel"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_item_purchase_fine_pay"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/btn_item_purchase_fine_pay"
+                            app:layout_constraintTop_toBottomOf="@+id/cl_ctm" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_item_purchase_fine_pay"
+                            android:layout_width="@dimen/action_button_width"
+                            android:layout_height="@dimen/action_button_heights"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:layout_marginEnd="@dimen/text_margin_large"
+                            android:layout_marginBottom="@dimen/text_margin_small"
+                            android:background="@drawable/bg_round"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/text_margin_large"
+                            android:paddingEnd="@dimen/text_margin_large"
+                            android:text="@string/pay"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/text_size"
+                            app:drawableStartCompat="@drawable/ic_done_circle"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/btn_purchase_fine_clear"
+                            app:layout_constraintTop_toBottomOf="@+id/cl_ctm" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
